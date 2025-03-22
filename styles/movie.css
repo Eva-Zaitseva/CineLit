@@ -1,0 +1,97 @@
+* {
+    -webkit-user-drag: none;
+    user-select: none;
+  }
+
+main {
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.cinema_container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ebe8e6;
+}
+
+.cinema_container h1 {
+    font-family: Arial, sans-serif;
+    color: #23190B;
+    font-size: 35px;
+    /* Размер шрифта для h1 */
+    font-weight: 700;
+    /* Жирный шрифт */
+    line-height: 115px;
+    /* Высота строки */
+    letter-spacing: 1%;
+    /* Расстояние между буквами */
+    text-transform: uppercase;
+    /* Преобразование текста в верхний регистр */
+    margin: 0;
+    /* Убираем отступы */
+}
+
+.fil_poisk {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.all_cinema {
+    margin: 0;
+    padding: 0;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.movie {
+    margin: 15px;
+    padding: 15px;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    /* background-color: aquamarine; */
+}
+
+.movie a img {
+    border-radius: 3%;
+    width: 260px;
+    height: 180px;
+    margin: 0;
+    background-color: #23190B;
+}
+
+.movie a {
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    color: #23190B;
+    font-size: 18px;
+    /* Размер шрифта для h1 */
+    font-weight: 700;
+    /* Жирный шрифт */
+    line-height: 30px;
+    /* Высота строки */
+    letter-spacing: 1%;
+    /* Расстояние между буквами */
+    /* text-transform: uppercase; */
+    /* Преобразование текста в верхний регистр */
+    margin: 0;
+    /* Убираем отступы */
+    padding: 0;
+}
+
+.movie a:hover {
+    color: #4b453b; /* Пример изменения цвета */
+}

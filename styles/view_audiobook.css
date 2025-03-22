@@ -1,0 +1,94 @@
+* {
+    -webkit-user-drag: none;
+    user-select: none;
+  }
+
+main{
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+    background-color: #ebe8e6;
+}
+
+.container{
+    margin: 0 auto;
+    padding: 1%;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+
+}
+
+.audiobook{
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.audio-details{
+    margin: 0;
+    padding: 0;
+    padding-bottom: 2%;
+    display: flex;
+    flex-direction: row;
+}
+
+.zag{
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-left: 5%;
+}
+
+.zag h1{
+    font-family: Arial, sans-serif;
+    font-size: 22px;
+    color: #23190B;
+}
+
+.zag p{
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    color: #23190B;
+    text-align: justify;
+}
+
+.audio-details img {
+    border-radius: 3%;
+    width: 180px; /* Фиксированная ширина */
+    height: 260px; /* Фиксированная высота */
+    margin: 0;
+    background-color: #23190B;
+    object-fit: cover; /* Масштабирует изображение с сохранением пропорций и обрезает лишнее */
+}
+
+.zag a{
+    display: block;
+    text-decoration: none;
+    color: #23190B;
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    /* margin: 0 auto; */
+    background-color: rgb(196, 187, 175);
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+}
+
+.zag a:hover{
+    color: #bfb9ae;
+    background-color:  rgb(104, 101, 96);
+    transition: color 0.3s, transform 0.3s;
+    font-size: 22px;
+}
+
+.btn {
+    display: flex;
+    width: 100%;
+    padding: 30px 20px;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+

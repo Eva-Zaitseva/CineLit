@@ -1,0 +1,501 @@
+body {
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    -webkit-user-drag: none;
+    user-select: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+header {
+    margin: 0;
+    width: 100%;
+    display: block;
+    background-color: rgb(255, 255, 255);
+    /* padding: 2%; */
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: nowrap;
+    width: 100%;
+
+}
+
+.logo {
+    padding: 15px;
+}
+
+.navigation {
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* .nav_btn {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+} */
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav ul li {
+    margin: 0 40px;
+}
+
+nav ul li a {
+    color: #372118;
+    text-decoration: none;
+    font-size: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+nav ul li a:hover {
+    color: #534844;
+    transition: color 0.3s, transform 0.3s;
+    font-size: 25px;
+    font-weight: 700;
+    /* transform: scale(1.1); */
+}
+
+.btn_p {
+    padding: 10px;
+    width: auto;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    display: none;
+    font-size: 20px;
+    /* Скрыто по умолчанию */
+}
+
+.search-button {
+    background-size: cover;
+    /* Масштабируем изображение */
+    width: 50px;
+    /* Ширина кнопки */
+    height: 50px;
+    /* Высота кнопки */
+    border: none;
+    /* Убираем рамку */
+    border-radius: 100%;
+    cursor: pointer;
+    /* Курсор при наведении */
+}
+
+main {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.glav {
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+    height: 1080px;
+    background-color: #E4DBD2;
+}
+
+.image-block {
+    position: relative;
+    /* Позволяет позиционировать текст поверх изображения */
+    width: 100%;
+    /* Ширина блока */
+    height: 820px;
+    /* Высота блока */
+    /* overflow: hidden; */
+    /* Скрывает содержимое, выходящее за пределы блока */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Тень для блока */
+}
+
+.image-block img {
+    width: 100%;
+    /* Изображение занимает всю ширину блока */
+    /* height: 100%; Изображение занимает всю высоту блока */
+    object-fit: cover;
+    /* Изображение сохраняет пропорции и заполняет блок */
+}
+
+.text-overlay {
+    position: absolute;
+    /* Позволяет позиционировать текст поверх изображения */
+    top: 50%;
+    /* Центрируем текст по вертикали */
+    left: 50%;
+    /* Центрируем текст по горизонтали */
+    transform: translate(-50%, -50%);
+    /* Центрируем текст */
+    color: #FCF5F1;
+    /* Цвет текста */
+    text-align: center;
+    /* Центрируем текст */
+}
+
+.text-overlay h1 {
+    font-size: 55px;
+    /* Размер шрифта для h1 */
+    font-family: Arial, sans-serif;
+    /* Шрифт Arial */
+    font-weight: bold;
+    /* Жирный шрифт */
+    letter-spacing: 1px;
+    /* Расстояние между буквами */
+    margin: 0;
+    /* Убираем отступы */
+    text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.7);
+    /* Тень текста для лучшей читаемости */
+}
+
+.text-overlay h2 {
+    font-size: 45px;
+    /* Размер шрифта для h2 */
+    font-family: Arial, sans-serif;
+    /* Шрифт Arial */
+    font-weight: bold;
+    /* Жирный шрифт */
+    letter-spacing: 1px;
+    /* Расстояние между буквами */
+    margin: 10px 0 0 0;
+    /* Отступы для h2 (10px сверху) */
+    text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
+    /* Тень текста для лучшей читаемости */
+}
+
+/* .class {
+    position: absolute;
+    height: 330px;
+    width: 100%;
+    background-color: #FAF4EB;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+} */
+
+.class {
+    position: absolute;
+    /* Оставляем абсолютное позиционирование */
+    height: 450px;
+    top: 72%;
+    /* Установите нужное значение для вертикального позиционирования */
+    left: 50%;
+    /* Центрируем по горизонтали */
+    transform: translateX(-50%);
+    /* Сдвигаем на 50% ширины самого блока */
+    width: 80%;
+    /* Установите нужную ширину */
+    background-color: #416341;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 35px;
+}
+
+/* .class h1 {
+    font-family: Arial, sans-serif;
+    color: #23190B;
+    font-size: 35px;
+    font-weight: 700;
+    line-height: 115px;
+    letter-spacing: 1%;
+    text-transform: uppercase;
+    margin: 0;
+} */
+
+.class h1 {
+    font-size: 33px;
+    font-family: Arial;
+    font-weight: 700;
+    line-height: 58px;
+    letter-spacing: 1%;
+    text-align: center;
+    text-transform: undefined;
+    width: 80%;
+    color: #FCF5F1;
+    text-shadow: 2px 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+.btn {
+    display: flex;
+    /* Горизонтальная компоновка кнопок */
+    justify-content: space-around;
+    /* Распределение кнопок с равными отступами */
+    width: 100%;
+    /* Ширина контейнера кнопок */
+    padding: 0 20px;
+    /* Отступы по бокам */
+}
+
+.btn .button {
+    font-size: 28px;
+    /* Размер шрифта для кнопок */
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    /* Обычный шрифт */
+    letter-spacing: 1%;
+    /* Расстояние между буквами */
+    text-transform: uppercase;
+    /* Преобразование текста в верхний регистр */
+    width: 330px;
+    height: 170px;
+    /* margin: 10px 0; */
+    /* Отступы сверху и снизу */
+    /* padding: 60px 70px; */
+    /* Отступы внутри кнопок */
+    border: none;
+    /* Убираем рамку */
+    border-radius: 35px;
+    /* Закругление углов кнопок */
+    background-color: #f6faf5;
+    /* Цвет фона кнопок */
+    color: #372118;
+    /* Цвет текста кнопок */
+    cursor: pointer;
+    /* Указатель при наведении */
+    transition: background-color 0.2s, color 0.2s, transform 0.2s;
+    box-shadow: 1px 3px 7px #372118;
+
+}
+
+.btn .button:hover {
+    background-color: #f3f0ea;
+    /* Цвет фона при наведении */
+    color: #543e32;
+    transform: scale(1.05);
+    /* font-size: 32px; */
+    box-shadow: 2px 4px 8px #372118;
+}
+
+.btn .button:active {
+    transform: scale(0.95); /* Уменьшение кнопки при нажатии */
+    transition: transform 0.1s ease; /* Быстрый переход при нажатии */
+    background-color:#eae7e0;
+}
+
+/* .class .hidden-section {
+    display: none;
+    color: #23190B;
+    font-family: Arial, sans-serif;
+    margin-top: 20px;
+    font-size: 20px;
+} */
+
+.inform {
+    width: 100%;
+    margin: 0;
+    padding-top: 1%;
+    padding-bottom: 5%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    background-color: #E4DBD2;
+}
+
+.text {
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 28px;
+    font-family: Arial;
+    font-weight: 400;
+    line-height: 45px;
+    letter-spacing: 1px;
+    text-align: justify;
+    padding: 3%;
+}
+
+.image {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-left: 2%;
+}
+
+.img1>img {
+    border-radius: 10px;
+}
+
+.img2>img {
+    border-radius: 10px;
+}
+
+footer {
+    width: 100%;
+    background-color: #3e3830; /* Цвет фона подвала */
+    padding: 20px 0; /* Отступы сверху и снизу */
+    box-sizing: border-box; /* Учитываем padding в ширине */
+}
+
+footer .container {
+    max-width: 1500px; /* Ограничение ширины контейнера */
+    margin: 0 auto; /* Центрирование контейнера */
+    padding: 0 20px; /* Отступы по бокам */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-around;
+    box-sizing: border-box; /* Учитываем padding в ширине */
+}
+
+
+
+
+.navigacia h2 {
+    font-size: 22px;
+    font-family: Arial;
+    font-weight: 400;
+    letter-spacing: 16%;
+    text-transform: uppercase;
+    color: #F8F8F8;
+
+}
+
+.navigacia ul {
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.navigacia ul li {
+    list-style: none;
+    font-size: 18px;
+    font-family: Arial;
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 45px;
+    color: #F8F8F8;
+}
+
+.navigacia a {
+    text-decoration: none;
+    color: #F8F8F8;
+}
+
+.navigacia a:hover {
+    text-decoration: underline;
+    color: #d3cfcf;
+}
+
+.direktor h2 {
+    font-size: 22px;
+    font-family: Arial;
+    font-weight: 400;
+    letter-spacing: 16%;
+    text-transform: uppercase;
+    color: #F8F8F8;
+
+}
+
+.direktor p {
+    font-size: 18px;
+    font-family: Arial;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-transform: undefined;
+    color: #F8F8F8;
+}
+
+.buhgalteria h2 {
+    font-size: 22px;
+    font-family: Arial;
+    font-weight: 400;
+    letter-spacing: 16%;
+    text-transform: uppercase;
+    color: #F8F8F8;
+
+}
+
+.buhgalteria p {
+    font-size: 18px;
+    font-family: Arial;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-transform: undefined;
+    color: #F8F8F8;
+}
+
+.email h2 {
+    font-size: 22px;
+    font-family: Arial;
+    font-weight: 400;
+    letter-spacing: 16%;
+    text-transform: uppercase;
+    color: #F8F8F8;
+
+}
+
+.email p {
+    font-size: 18px;
+    font-family: Arial;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-transform: undefined;
+    color: #F8F8F8;
+}
+
+.polkonf a {
+    text-decoration: none;
+}
+
+.polkonf h2 {
+    font-size: 22px;
+    font-family: Arial;
+    font-weight: 400;
+    letter-spacing: 16%;
+    text-transform: uppercase;
+    color: #F8F8F8;
+
+}
+
+.polkonf p {
+    font-size: 18px;
+    font-family: Arial;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-transform: undefined;
+    color: #F8F8F8;
+}

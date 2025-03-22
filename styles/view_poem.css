@@ -1,0 +1,112 @@
+* {
+    -webkit-user-drag: none;
+    user-select: none;
+  }
+
+main{
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+    background-color: #ebe8e6;
+}
+
+.container{
+    margin: 0 auto;
+    padding: 1%;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+
+}
+
+.poem{
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.poem-details{
+    margin: 0;
+    padding: 0;
+    padding-bottom: 2%;
+    display: flex;
+    flex-direction: row;
+}
+
+.zag{
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-left: 5%;
+}
+
+.zag h1{
+    font-family: Arial, sans-serif;
+    font-size: 28px;
+    color: #23190B;
+}
+
+.zag p{
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    color: #23190B;
+    text-align: justify;
+}
+
+.poem-details img{
+    border-radius: 3%;
+    width: 360px;
+    margin: 0;
+    background-color: #23190B;
+}
+
+.download-links{
+    margin: 0 auto;
+    padding: 0;
+}
+
+.download-links h3{
+    font-size: 25px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin: 10px 0 0 0;
+    padding-bottom: 20px;
+}
+
+.download-links ul {
+    list-style-type: none; /* Убираем маркеры списка */
+    padding: 0; /* Убираем отступы */
+    margin: 0; /* Убираем внешние отступы */
+    display: flex; /* Используем flexbox для горизонтального расположения */
+    justify-content: center;
+}
+
+.download-links li {
+    margin-right: 15px; /* Добавляем отступ между элементами списка */
+
+}
+
+.download-links li:last-child {
+    margin-right: 0; /* Убираем отступ у последнего элемента */
+}
+
+.download-links a{
+    display: block;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-size: 23px;
+    color: #23190B;
+    background-color: rgb(196, 187, 175);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.download-links a:hover{
+    color: #bfb9ae;
+    background-color:  rgb(104, 101, 96);
+    transition: color 0.3s, transform 0.3s;
+    font-size: 25px;
+}
