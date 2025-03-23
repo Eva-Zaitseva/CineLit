@@ -36,7 +36,7 @@
                             echo "<a href='admin_auto.php' style='text-decoration:none; color:#F8F8F8; font-family:Arial; font-size:14px;'>Администратор</a>";
                         } else {
                             echo "<a href='logout.php'>Выход</a> <br>";
-                            echo "<a href='admin_panel.php'>Редактор</a>";
+                            echo "<a href='admin_panel.php'>Админ-панель</a>";
                         }
                         ?>
     </div>

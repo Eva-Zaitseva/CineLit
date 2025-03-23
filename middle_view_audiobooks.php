@@ -19,23 +19,15 @@ if (!$audiobook) {
     exit;
 }
 ?>
-
 <link rel="stylesheet" href="styles/view_audiobook.css">
-
 <main>
 <div class="container">
-
 <div class="audiobook">
-
     <div class="audio-details">
-
-        <img src="image/<?php echo htmlspecialchars($audiobook['image_url']); ?>" alt="<?php echo htmlspecialchars($audiobook['title']); ?>">
-        
+        <img src="image/<?php echo htmlspecialchars($audiobook['image_url']); ?>" alt="<?php echo htmlspecialchars($audiobook['title']); ?>">  
         <div class="zag">
-
         <h1><?php echo htmlspecialchars($audiobook['title']); ?></h1>
         <p><?php echo htmlspecialchars($audiobook['description']); ?></p>
-
         <!-- <audio controls>
             <source src="<?php 
             // echo htmlspecialchars($audiobook['audio_url']); 
@@ -43,20 +35,19 @@ if (!$audiobook) {
             " type="audio/mpeg">
             Ваш браузер не поддерживает элемент audio.
         </audio> -->
+        <div class="btn" >
+<?php if (!empty($audiobook['audio_url'])): ?>
+            <p><a href="<?php echo htmlspecialchars($audiobook['audio_url']); ?>">Слушать аудиокнигу</a></p>
+        <?php endif; ?>
 
-        <p><a href="<?php echo htmlspecialchars($audiobook['audio_url']); ?>" >Слушать аудиокнигу</a></p>
-
-        <p><a href="audiobooks/<?php echo htmlspecialchars($audiobook['audio_url2']); ?>" download>Скачать аудиокнигу</a></p>
-
-        </div>
-
-    </div>
-
+        <?php if (!empty($audiobook['audio_url2'])): ?>
+            <p><a href="audiobooks/<?php echo htmlspecialchars($audiobook['audio_url2']); ?>" download>Скачать аудиокнигу</a></p>
+        <?php endif; ?>
 </div>
-
+        </div>
+    </div>
+</div>
 <span class="arrow"> <a href="middle.php#audio">Назад к списку аудиокниг</a> </span>
-
 </div>
 </main>
-
 <?php include 'footer.php' ?>

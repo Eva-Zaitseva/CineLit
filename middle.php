@@ -2,9 +2,11 @@
 include './components/core.php';
 include './components/header.php';
 
+// Переменные с поиском, классами
 $searchQuery = isset($_POST['search']) ? $conn->real_escape_string($_POST['search']) : '';
 $classFilter = isset($_POST['class']) ? $conn->real_escape_string($_POST['class']) : '';
 
+// Массив с категориями
 $tables = [
     'movies' => 'middle_movies',
     'performances' => 'middle_performances',

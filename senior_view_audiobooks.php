@@ -44,9 +44,13 @@ if (!$audiobook) {
             Ваш браузер не поддерживает элемент audio.
         </audio> -->
 <div class="btn" >
-        <p><a href="<?php echo htmlspecialchars($audiobook['audio_url']); ?>" >Слушать аудиокнигу</a></p>
+<?php if (!empty($audiobook['audio_url'])): ?>
+            <p><a href="<?php echo htmlspecialchars($audiobook['audio_url']); ?>">Слушать аудиокнигу</a></p>
+        <?php endif; ?>
 
-        <p><a href="audiobooks/<?php echo htmlspecialchars($audiobook['audio_url2']); ?>" download>Скачать аудиокнигу</a></p>
+        <?php if (!empty($audiobook['audio_url2'])): ?>
+            <p><a href="audiobooks/<?php echo htmlspecialchars($audiobook['audio_url2']); ?>" download>Скачать аудиокнигу</a></p>
+        <?php endif; ?>
 </div>
         </div>
 

@@ -2,7 +2,6 @@
 include "./components/core.php"; // Подключаем базу данных
 include "./components/header.php"; // Подключаем заголовок
 
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $login = $_POST['login'];
     $password = $_POST['password'];
@@ -12,7 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bind_param("s", $login);
     $stmt->execute();
     $result = $stmt->get_result();
-
     if ($result->num_rows > 0) {
         $user = $result->fetch_assoc();
         
@@ -29,11 +27,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         $_SESSION['error'] = "Неверный логин или пароль";
     }
-
     $stmt->close();
 }
 ?>
-
 <main>
     <form action="" method="POST">
         <div class="auth">

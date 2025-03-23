@@ -32,7 +32,7 @@ if (!$movie) {
 
         <img src="image/<?php echo htmlspecialchars($movie['image_url']); ?>" alt="<?php echo htmlspecialchars($movie['title']); ?>">
         
-        <div class="zag">
+    <div class="zag">
 
         <h1><?php echo htmlspecialchars($movie['title']); ?></h1>
         <p><?php echo htmlspecialchars($movie['description']); ?></p>

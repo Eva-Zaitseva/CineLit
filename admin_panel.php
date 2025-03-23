@@ -1,33 +1,24 @@
-<?php 
+<?php
 include "./components/core.php";
-include "./components/headerAdmin.php";
+include "./components/header.php";
 
-
-if (isset($_SESSION['success'])) {
-    echo "<p style='color: green;'>" . $_SESSION['success'] . "</p>";
-    unset($_SESSION['success']);
+// Проверка, авторизован ли администратор
+if (!isset($_SESSION['user']) || $_SESSION['user']['type'] !== 'admin') {
+    header("Location: admin_auto.php");
+    exit();
 }
-
-if (isset($_SESSION['error'])) {
-    echo "<p style='color: red;'>" . $_SESSION['error'] . "</p>";
-    unset($_SESSION['error']);
-}
-
- ?>
+?>
 
 <main>
-<div class="editor">
-    <a href="add_movie.php">Добавить фильм</a>
-    <br>
-    <a href="add_audiobook.php">Добавить аудиокнигу</a>
-    <br>
-    <a href="delete_movie.php">Удалить фильм</a>
-    <br>
-    <a href="update_movie.php">Редактировать фильм</a>
-    <br>
-    <a href="logout.php">Выйти</a>
-
-
-   
-</div>
+    <div class="admin-panel">
+        <h1>Админ панель</h1>
+        <div class="admin-options">
+            <a href="admin_manage.php?category=movies" class="admin-option">Управление фильмами</a>
+            <a href="admin_manage.php?category=performances" class="admin-option">Управление спектаклями</a>
+            <a href="admin_manage.php?category=poems" class="admin-option">Управление стихами</a>
+            <a href="admin_manage.php?category=audio" class="admin-option">Управление аудиокнигами</a>
+        </div>
+    </div>
 </main>
+
+<?php include 'footer.php'; ?>
