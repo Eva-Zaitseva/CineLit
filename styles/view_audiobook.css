@@ -1,94 +1,203 @@
 * {
     -webkit-user-drag: none;
     user-select: none;
-  }
+    box-sizing: border-box;
+}
 
-main{
+main {
     margin: 0 auto;
     padding: 0;
     width: 100%;
     background-color: #ebe8e6;
+    min-height: 100vh;
 }
 
-.container{
+.container {
     margin: 0 auto;
-    padding: 1%;
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    width: 90%;
-
+    width: 100%;
+    max-width: 1200px;
 }
 
-.audiobook{
+.audiobook {
     margin: 0 auto;
-    padding: 0;
+    padding: 20px 0;
     display: flex;
     flex-direction: column;
-    flex-wrap: nowrap;
+    width: 100%;
 }
 
-.audio-details{
+.audio-details {
     margin: 0;
-    padding: 0;
-    padding-bottom: 2%;
+    padding: 0 0 30px 0;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: flex-start;
 }
 
-.zag{
+.zag {
     display: flex;
     flex-direction: column;
     font-family: Arial, Helvetica, sans-serif;
-    padding-left: 5%;
+    flex: 1;
+    min-width: 300px;
+    gap: 20px;
 }
 
-.zag h1{
+.zag h1 {
     font-family: Arial, sans-serif;
-    font-size: 22px;
+    font-size: clamp(20px, 3vw, 28px);
     color: #23190B;
+    margin: 0;
+    line-height: 1.3;
 }
 
-.zag p{
+.zag p {
     font-family: Arial, sans-serif;
-    font-size: 18px;
+    font-size: clamp(16px, 2vw, 18px);
     color: #23190B;
     text-align: justify;
+    line-height: 1.5;
+    margin: 0;
 }
 
 .audio-details img {
-    border-radius: 3%;
-    width: 180px; /* Фиксированная ширина */
-    height: 260px; /* Фиксированная высота */
+    border-radius: 10px;
+    width: 180px;
+    height: 260px;
     margin: 0;
     background-color: #23190B;
-    object-fit: cover; /* Масштабирует изображение с сохранением пропорций и обрезает лишнее */
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.zag a{
+.zag a {
     display: block;
     text-decoration: none;
     color: #23190B;
     font-family: Arial, sans-serif;
-    font-size: 20px;
-    /* margin: 0 auto; */
+    font-size: clamp(16px, 2vw, 20px);
     background-color: rgb(196, 187, 175);
     border-radius: 10px;
-    padding: 20px;
+    padding: 15px 20px;
+    transition: all 0.3s ease;
+    text-align: center;
     width: 100%;
+    max-width: 300px;
+    margin-top: 20px;
 }
 
-.zag a:hover{
-    color: #bfb9ae;
-    background-color:  rgb(104, 101, 96);
-    transition: color 0.3s, transform 0.3s;
-    font-size: 22px;
+.zag a:hover {
+    color: #f5f5f5;
+    background-color: rgb(104, 101, 96);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .btn {
     display: flex;
     width: 100%;
-    padding: 30px 20px;
+    padding: 20px 0;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
+/* Кнопка "Назад" */
+.arrow {
+    position: relative;
+    display: inline-block;
+    padding-left: 25px;
+    margin-top: 20px;
+}
+
+.arrow a {
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-size: clamp(16px, 2vw, 20px);
+    color: #23190B;
+    transition: all 0.3s ease;
+}
+
+.arrow a:hover {
+    text-decoration: underline;
+    color: #625b52;
+}
+
+.arrow::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-right: 8px solid #23190B;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.arrow:hover::before {
+    border-right-color: #625b52;
+    transform: translateY(-50%) translateX(-3px);
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .audio-details {
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 20px;
+        gap: 20px;
+    }
+    
+    .zag {
+        padding-left: 0;
+        min-width: auto;
+        width: 100%;
+        align-items: center;
+    }
+    
+    .zag a {
+        max-width: 100%;
+    }
+    
+    .btn {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .audio-details img {
+        width: 150px;
+        height: 220px;
+    }
+    
+    .zag a {
+        padding: 12px 15px;
+        font-size: 16px;
+    }
+    
+    .arrow {
+        padding-left: 20px;
+        margin-top: 15px;
+    }
+    
+    .arrow::before {
+        border-right-width: 6px;
+        border-top-width: 6px;
+        border-bottom-width: 6px;
+    }
+}

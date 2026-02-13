@@ -1,8 +1,4 @@
 /* Общие стили */
-html {
-    scroll-behavior: smooth;
-}
-
 * {
     -webkit-user-drag: none;
     user-select: none;
@@ -13,7 +9,7 @@ html {
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f0eb;
+    background-color: #f8f4ee;
 }
 
 main {
@@ -53,23 +49,24 @@ main {
 
 .class_btn {
     padding: 10px 20px;
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
+    background-color: #e0d6c8;
+    border: 1px solid #c4b8a7;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
     font-size: 20px;
     font-family: Arial, Helvetica, sans-serif;
+    color: #5a4a3a;
 }
 
 .class_btn.active {
-    background-color: #375137;
+    background-color: #8c6a4f;
     color: white;
-    border-color: #375137;
+    border-color: #7a5c44;
 }
 
 .class_btn:hover {
-    background-color: #375137;
+    background-color: #7a5c44;
     color: white;
 }
 
@@ -91,15 +88,16 @@ main {
 .poisk input[type="text"] {
     flex: 1;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #c4b8a7;
     border-radius: 5px;
     font-size: 20px;
     font-family: Arial, Helvetica, sans-serif;
+    background-color: #f8f4ee;
 }
 
 .poisk_btn {
     padding: 10px 20px;
-    background-color: #416341;
+    background-color: #8c6a4f;
     color: white;
     border: none;
     border-radius: 5px;
@@ -109,12 +107,9 @@ main {
 }
 
 .poisk_btn:hover {
-    background-color: #375137;
+    background-color: #6d533e;
 }
 
-.cinema_container,
-.spect_container,
-.poem_container,
 .audio_container {
     width: 100%;
     margin: 0 auto;
@@ -122,15 +117,12 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #f4f0ebdd;
+    background-color: #f1e9e0;
 }
 
-.cinema_container h1,
-.spect_container h1,
-.poem_container h1,
 .audio_container h1 {
     font-family: Arial, sans-serif;
-    color: #463926;
+    color: #5a4a3a;
     font-size: 35px;
     font-weight: 700;
     line-height: 90px;
@@ -143,7 +135,7 @@ main {
     font-family: Arial, sans-serif;
     font-size: 35px;
     line-height: 60px;
-    background-color: #416341;
+    background-color: #8c6a4f;
     border-radius: 50px;
     padding: 0 20px;
     color: #FCF5F1;
@@ -153,7 +145,6 @@ main {
 }
 
 .all_cinema {
-    display: none;
     margin: 0;
     padding: 0;
     display: flex;
@@ -163,14 +154,16 @@ main {
     gap: 20px;
 }
 
-/* Общие стили карточек */
+/* Стили карточки аудиокниги */
 .movie {
     margin: 10px;
     padding: 10px;
+    width: 200px;
+    height: 340px;
     display: flex;
     flex-direction: column;
-    background-color: #4f673d;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    background-color: #a0866d;
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
     cursor: pointer;
@@ -183,18 +176,26 @@ main {
 .movie:hover {
     transform: scale(1.05);
     box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.2);
-    background-color: #375137;
+    background-color: #8c6a4f;
 }
 
-.movie-card-wrapper {
-    position: relative;
-    height: 100%;
+.movie img {
+    border-radius: 8px;
+    width: 180px;
+    height: 260px;
+    margin: 0 auto;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.movie:hover img {
+    transform: scale(0.98);
 }
 
 /* Контейнер для текста с фиксированной высотой */
 .movie-title-container {
     position: relative;
-    margin-top: 9px;
+    margin-top: 12px;
     min-height: 50px;
     height: 50px;
     overflow: hidden;
@@ -206,8 +207,8 @@ main {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: #eae1d5;
-    font-size: 18px;
+    color: #f5f0e9;
+    font-size: 16px;
     font-weight: 550;
     line-height: 1.4;
     padding: 0 5px;
@@ -222,12 +223,12 @@ main {
     top: 0;
     left: 0;
     width: 100%;
-    color: #eae1d5;
-    font-size: 18px;
+    color: #f5f0e9;
+    font-size: 16px;
     font-weight: 550;
     line-height: 1.4;
-    padding: 0 5px;
     text-align: start;
+    padding: 0 5px;
     opacity: 0;
     transition: opacity 0.4s ease;
 }
@@ -247,106 +248,19 @@ main {
     top: 15px;
     right: 15px;
     background-color: rgba(231, 213, 191, 0.95);
-    color: #463926;
-    padding: 6px 12px;
+    color: #5a4a3a;
+    padding: 5px 10px;
     font-size: 12px;
     font-weight: bold;
     border-radius: 15px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
     z-index: 1;
     transition: all 0.3s ease;
-    border: 1px solid #c4b8a7;
 }
 
 .movie:hover .class-label {
     transform: translateY(-5px);
     background-color: rgba(255, 248, 240, 0.95);
-}
-
-/* Стили для карточек фильмов и спектаклей */
-.cinema_container .movie,
-.spect_container .movie {
-    width: 310px;
-    height: 280px;
-}
-
-.cinema_container .movie img,
-.spect_container .movie img {
-    border-radius: 8px;
-    width: 100%;
-    height: 200px;
-    margin: 0 auto;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-}
-
-/* Стили для карточек поэзии и аудиокниг*/
-.poem_container .movie,
-.audio_container .movie {
-    width: 200px;
-    height: 340px;
-}
-
-.poem_container .movie img,
-.audio_container .movie img {
-    border-radius: 8px;
-    width: 180px;
-    height: 260px;
-    margin: 0 auto;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-    border: 1px solid #c4b8a7;
-}
-
-/* Пагинация */
-.pagination {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.pagination a {
-    padding: 8px 12px;
-    background-color: #ddd;
-    border: 1px solid #ccc;
-    color: #534844;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-}
-
-.pagination a.active {
-    background-color: #375137;
-    color: white;
-    border-color: #375137;
-}
-
-.pagination a:hover {
-    background-color: #375137;
-    color: white;
-}
-
-/* Кнопка "Наверх" */
-#scrollToTopBtn {
-    display: none;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 99;
-    border: none;
-    outline: none;
-    background-color: #776b5a;
-    color: white;
-    cursor: pointer;
-    padding: 15px;
-    border-radius: 80%;
-    font-size: 30px;
-    transition: background-color 0.3s ease;
-}
-
-#scrollToTopBtn:hover {
-    background-color: #4a4237;
 }
 
 /* Медиа-запросы для мобильных устройств */
@@ -359,14 +273,48 @@ main {
     .fil_poisk {
         flex-direction: column;
         align-items: center;
-        
     }
 
     .poisk {
         width: 100%;
     }
 
-    .poisk input{
+    .movie {
+        width: 100%;
+        max-width: 180px;
+        height: auto;
+    }
+
+    .movie img {
+        width: 100%;
+        height: auto;
+        max-height: 260px;
+    }
+
+    .movie-title,
+    .movie-title-full {
+        white-space: normal;
+        position: static;
+        opacity: 1;
+        font-size: 14px;
+    }
+
+    .class_buttons {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .fil_poisk {
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    .poisk {
+        width: 100%;
+    }
+
+    .poisk input {
         width: 40px;
     }
 
@@ -400,48 +348,46 @@ main {
         max-height: 230px;
     }
 
+    /* Контейнер для текста с фиксированной высотой */
+    .movie-title-container {
+        position: relative;
+        margin-top: 5px;
+        min-height: 15px;
+        height: 20px;
+        overflow: hidden;
+    }
 
+    /* Обрезанный текст */
+    .movie-title {
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: #eae1d5;
+        font-size: 13px;
+        font-weight: 350;
+        line-height: 1.1;
+        padding: 0 3px;
+        transition: opacity 0.4s ease;
+        position: absolute;
+        width: calc(100% - 10px);
+    }
 
-/* Контейнер для текста с фиксированной высотой */
-.movie-title-container {
-    position: relative;
-    margin-top: 5px;
-    min-height: 15px;
-    height: 20px;
-    overflow: hidden;
-}
-
-/* Обрезанный текст */
-.movie-title {
-    display: block;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: #eae1d5;
-    font-size: 13px;
-    font-weight: 350;
-    line-height: 1.1;
-    padding: 0 3px;
-    transition: opacity 0.4s ease;
-    position: absolute;
-    width: calc(100% - 10px);
-}
-
-/* Полный текст */
-.movie-title-full {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    color: #eae1d5;
-    font-size: 13px;
-    font-weight: 350;
-    line-height: 1.1;
-    padding: 0 3px;
-    text-align: start;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-}
+    /* Полный текст */
+    .movie-title-full {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        color: #eae1d5;
+        font-size: 13px;
+        font-weight: 350;
+        line-height: 1.1;
+        padding: 0 3px;
+        text-align: start;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
 
     .container h3 {
         font-size: 22px;
@@ -455,15 +401,40 @@ main {
         font-size: 26px;
         margin: 15px 0 20px;
     }
-    
+
+    .fade-out {
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+
+    .fade-in {
+        opacity: 1;
+        transition: opacity 0.5s ease;
+    }
+
 }
 
-.fade-out {
-    opacity: 0;
-    transition: opacity 0.5s ease;
+#scrollToTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: #8c6a4f;
+    color: white;
+    cursor: pointer;
+    padding: 12px;
+    border-radius: 50%;
+    font-size: 24px;
+    transition: all 0.3s ease;
+    opacity: 0.9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.fade-in {
+#scrollToTopBtn:hover {
+    background-color: #6d533e;
     opacity: 1;
-    transition: opacity 0.5s ease;
+    transform: translateY(-3px);
 }

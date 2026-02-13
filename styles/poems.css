@@ -108,10 +108,7 @@ main {
     background-color: #375137;
 }
 
-.cinema_container,
-.spect_container,
-.poem_container,
-.audio_container {
+.poem_container {
     width: 100%;
     margin: 0 auto;
     padding: 20px;
@@ -121,10 +118,7 @@ main {
     background-color: #f4f0ebdd;
 }
 
-.cinema_container h1,
-.spect_container h1,
-.poem_container h1,
-.audio_container h1 {
+.poem_container h1 {
     font-family: Arial, sans-serif;
     color: #463926;
     font-size: 35px;
@@ -148,7 +142,7 @@ main {
     width: fit-content;
 }
 
-.all_cinema {
+.all_poems {
     margin: 0;
     padding: 0;
     display: flex;
@@ -158,7 +152,7 @@ main {
     gap: 20px;
 }
 
-.movie {
+.poem {
     margin: 15px;
     padding: 15px;
     width: min-content;
@@ -173,21 +167,21 @@ main {
     cursor: pointer;
 }
 
-.movie:hover {
+.poem:hover {
     transform: scale(1.05);
     box-shadow: 0px 0px 15px 4px rgba(0, 0, 0, 0.5);
 }
 
-.movie a img {
+.poem a img {
     border-radius: 10px;
-    width: 360px;
+    width: 180px;
     height: 260px;
     margin: 0;
     background-color: #23190B;
     object-fit: cover; 
 }
 
-.movie a {
+.poem a {
     text-decoration: none;
     font-family: Arial, sans-serif;
     color: #eae1d5;
@@ -199,57 +193,8 @@ main {
     padding: 0;
 }
 
-.movie a:hover {
+.poem a:hover {
     color: #c0bbb3;
-}
-
-.poem_container .movie a img {
-    border-radius: 3%;
-    width: 180px;
-    height: 260px;
-    margin: 0;
-    background-color: #23190B;
-    object-fit: cover; 
-}
-
-.audio_container .movie {
-    margin: 15px;
-    padding: 15px;
-    width: min-content;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    background-color: #4f673d;
-    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-    transition: transform 0.3s;
-}
-
-.audio_container .movie:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 0px 15px 4px rgba(0, 0, 0, 0.5);
-}
-
-.audio_container .movie a img {
-    border-radius: 3%;
-    width: 180px;
-    height: 260px;
-    margin: 0;
-    background-color: #23190B;
-    object-fit: cover; 
-}
-
-.audio_container .movie a {
-    text-decoration: none;
-    font-family: Arial, sans-serif;
-    color: #eae1d5;
-    font-size: 16px;
-    font-weight: 550;
-    line-height: 28px;
-    letter-spacing: 1px;
-    margin: 0;
-    padding: 0;
 }
 
 /* Медиа-запросы для мобильных устройств */
@@ -268,34 +213,8 @@ main {
         width: 100%;
     }
 
-    .movie a img {
+    .poem a img {
         width: 100%;
         height: auto;
     }
-
-    .audio_container .movie a img {
-        width: 100%;
-        height: auto;
-    }
-}
-
-#scrollToTopBtn {
-    display: none; 
-    position: fixed; 
-    bottom: 20px; 
-    right: 20px;
-    z-index: 99; 
-    border: none; 
-    outline: none;
-    background-color: #776b5a;
-    color: white; 
-    cursor: pointer; 
-    padding: 15px; 
-    border-radius: 80%; 
-    font-size: 30px;
-    transition: background-color 0.8s ease; 
-}
-
-#scrollToTopBtn:hover {
-    background-color: #4a4237; 
 }
