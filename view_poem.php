@@ -3,8 +3,25 @@ include "./components/core.php";
 include "./components/view_header.php";
 
 $poem_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+$from = isset($_GET['from']) ? $_GET['from'] : '';
 
-$sql = "SELECT * FROM primary_poems WHERE id = ?";
+$table = '';
+switch($from) {
+    case 'primary':
+        $table = 'primary_poems';
+        break;
+    case 'middle':
+        $table = 'middle_poems';
+        break;
+    case 'senior':
+        $table = 'senior_poems';
+        break;
+    default:
+        echo "Неверный параметр источника.";
+        exit;
+}
+
+$sql = "SELECT * FROM $table WHERE id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $poem_id);
 $stmt->execute();
@@ -12,30 +29,21 @@ $result = $stmt->get_result();
 $poem = $result->fetch_assoc();
 
 if (!$poem) {
-    echo "Стих/сбоник не найден.";
+    echo "Стих не найден.";
     exit;
 }
 ?>
-
 <link rel="stylesheet" href="./styles/view_poem.css">
-
 <main>
 <div class="container">
-
 <div class="poem">
-
     <div class="poem-details">
-
         <img src="image/<?php echo htmlspecialchars($poem['image_url']); ?>" alt="<?php echo htmlspecialchars($poem['title']); ?>">
-        
         <div class="zag">
-
-        <h1><?php echo htmlspecialchars($poem['title']); ?></h1>
-        <p><?php echo htmlspecialchars($poem['description']); ?></p>
-
+            <h1><?php echo htmlspecialchars($poem['title']); ?></h1>
+            <p><?php echo htmlspecialchars($poem['description']); ?></p>
         </div>
     </div>
-    
     <div class="download-links">
         <h3>Скачать:</h3>
         <ul>
@@ -53,12 +61,8 @@ if (!$poem) {
             <?php endif; ?>
         </ul>
     </div>
-
-    
 </div>
-
-<span class="arrow"> <a href="primary.php#poems">Назад к списку сборников стихов</a> </span>
-
+<span class="arrow"> <a href="poems.php#poems">Назад к списку поэзии</a> </span>
 </div>
 </main>
 

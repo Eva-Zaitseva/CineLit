@@ -2,10 +2,8 @@
 include "./components/core.php";
 include "./components/view_header.php";
 
-// Получаем идентификатор аудиокниги из URL
 $audiobook_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
-// Получаем информацию об аудиокниге из базы данных
 $sql = "SELECT * FROM primary_audiobooks WHERE id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $audiobook_id);
@@ -14,7 +12,6 @@ $result = $stmt->get_result();
 
 $audiobook = $result->fetch_assoc();
 
-// Проверяем, найдена ли аудиокнига
 if (!$audiobook) {
     echo "Аудиокнига не найдена.";
     exit;
@@ -36,15 +33,6 @@ if (!$audiobook) {
 
         <h1><?php echo htmlspecialchars($audiobook['title']); ?></h1>
         <p><?php echo htmlspecialchars($audiobook['description']); ?></p>
-
-        <!-- <audio controls>
-            <source src="<?php 
-            // echo htmlspecialchars($audiobook['audio_url']); 
-            ?>
-            " type="audio/mpeg">
-            Ваш браузер не поддерживает элемент audio.
-        </audio> -->
-
         <div class="btn" >
 <?php if (!empty($audiobook['audio_url'])): ?>
             <p><a href="<?php echo htmlspecialchars($audiobook['audio_url']); ?>">Слушать аудиокнигу</a></p>

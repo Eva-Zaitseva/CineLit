@@ -4,16 +4,16 @@ include './components/header.php';
 
 $tables = [
     'primary' => [
-        'table' => 'primary_performances',
-        'view_page' => 'view_performance.php'
+        'table' => 'primary_audiobooks',
+        'view_page' => 'view_audiobooks.php'
     ],
     'middle' => [
-        'table' => 'middle_performances',
-        'view_page' => 'view_performance.php'
+        'table' => 'middle_audiobooks',
+        'view_page' => 'view_audiobooks.php'
     ],
     'senior' => [
-        'table' => 'senior_performances',
-        'view_page' => 'view_performance.php'
+        'table' => 'senior_audiobooks',
+        'view_page' => 'view_audiobooks.php'
     ]
 ];
 
@@ -25,7 +25,7 @@ foreach ($tables as $type => $data) {
 }
 ?>
 
-<link rel="stylesheet" href="./styles/movie_all.css">
+<link rel="stylesheet" href="./styles/audiobooks_all.css">
 <style>
     html { scroll-behavior: smooth; }
     .no-results { text-align: center; padding: 40px; font-size: 18px; color: #666; width: 100%; }
@@ -35,7 +35,7 @@ foreach ($tables as $type => $data) {
 
 <main>
 <div class="container">
-<h3>СПЕКТАКЛИ ДЛЯ ВСЕХ КЛАССОВ</h3>
+<h3>АУДИОКНИГИ ДЛЯ ВСЕХ КЛАССОВ</h3>
 <div class="full-poisk">
 
 <div class="class_buttons">
@@ -54,39 +54,36 @@ foreach ($tables as $type => $data) {
 
 </div>
 </div>
-<div class="spect_container">
-    <div id="performancesContainer" class="all_cinema">
+<div class="audio_container">
+    <div id="audiobooksContainer" class="all_cinema">
         <?php
-        $hasPerformances = false;
+        $hasAudiobooks = false;
         foreach ($tables as $type => $data) {
             if (isset($results[$type]) && $results[$type]->num_rows > 0) {
-                $hasPerformances = true;
-                while ($performance = $results[$type]->fetch_assoc()) {
-                    echo '<a href="' . $data['view_page'] . '?id=' . $performance['id'] . '&from=' . $type . '" class="movie" title="' . htmlspecialchars($performance['title']) . '">';
-                    $imagePath = 'image/' . htmlspecialchars($performance['image_url']);
+                $hasAudiobooks = true;
+                while ($audiobook = $results[$type]->fetch_assoc()) {
+                    echo '<a href="' . $data['view_page'] . '?id=' . $audiobook['id'] . '&from=' . $type . '" class="movie" title="' . htmlspecialchars($audiobook['title']) . '">';
+                    echo '<div class="movie-card-wrapper">';
+                    echo '<img src="image/' . htmlspecialchars($audiobook['image_url']) . '" alt="' . htmlspecialchars($audiobook['title']) . '">';
                     
                     $classLabel = '';
                     if ($type == 'primary') {
-                        $classLabel = 'Нач. школа (' . $performance['class'] . ' кл.)';
+                        $classLabel = 'Нач. школа (' . $audiobook['class'] . ' кл.)';
                     } elseif ($type == 'middle') {
-                        $classLabel = 'Ср. школа (' . $performance['class'] . ' кл.)';
+                        $classLabel = 'Ср. школа (' . $audiobook['class'] . ' кл.)';
                     } else {
-                        $classLabel = 'Ст. школа (' . $performance['class'] . ' кл.)';
+                        $classLabel = 'Ст. школа (' . $audiobook['class'] . ' кл.)';
                     }
                     
-                    echo '<div class="movie-card-wrapper">';
-                    echo '<img src="' . $imagePath . '" alt="' . htmlspecialchars($performance['title']) . '">';
                     echo '<span class="class-label">' . $classLabel . '</span>';
                     echo '<div class="movie-title-container">';
-                    echo '<span class="movie-title">' . htmlspecialchars($performance['title']) . '</span>';
-                    echo '<span class="movie-title-full">' . htmlspecialchars($performance['title']) . '</span>';
-                    echo '</div>';
-                    echo '</div>';
-                    echo '</a>';
+                    echo '<span class="movie-title">' . htmlspecialchars($audiobook['title']) . '</span>';
+                    echo '<span class="movie-title-full">' . htmlspecialchars($audiobook['title']) . '</span>';
+                    echo '</div></div></a>';
                 }
             }
         }
-        if (!$hasPerformances) echo '<div class="no-results">Спектакли не найдены</div>';
+        if (!$hasAudiobooks) echo '<div class="no-results">Аудиокниги не найдены</div>';
         ?>
     </div>
 </div>
@@ -100,21 +97,21 @@ $(document).ready(function() {
     let currentClass = '';
     let currentSearch = '';
 
-    function loadPerformances() {
-        $('#performancesContainer').html('<div class="loading">Загрузка...</div>');
+    function loadAudiobooks() {
+        $('#audiobooksContainer').html('<div class="loading">Загрузка...</div>');
         
         $.ajax({
-            url: 'spect_ajax.php',
+            url: 'audiobooks_ajax.php',
             type: 'GET',
             data: {
                 class: currentClass,
                 search: currentSearch
             },
             success: function(response) {
-                $('#performancesContainer').html(response);
+                $('#audiobooksContainer').html(response);
             },
             error: function() {
-                $('#performancesContainer').html('<div class="error">Ошибка загрузки данных</div>');
+                $('#audiobooksContainer').html('<div class="error">Ошибка загрузки данных</div>');
             }
         });
     }
@@ -123,13 +120,13 @@ $(document).ready(function() {
         $('.class_btn').removeClass('active');
         $(this).addClass('active');
         currentClass = $(this).data('class');
-        loadPerformances();
+        loadAudiobooks();
     });
 
     $('#searchForm').submit(function(e) {
         e.preventDefault();
         currentSearch = $('#searchInput').val();
-        loadPerformances();
+        loadAudiobooks();
     });
 
     const scrollToTopBtn = document.getElementById("scrollToTopBtn");

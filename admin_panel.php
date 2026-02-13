@@ -1,16 +1,17 @@
 <?php
-include "./components/core.php";
-include "./components/header.php";
+include "components/core.php";
+include "components/header.php";
 
-// Проверка, авторизован ли администратор
 if (!isset($_SESSION['user']) || $_SESSION['user']['type'] !== 'admin') {
     header("Location: admin_auto.php");
     exit();
 }
 ?>
 
+<link rel="stylesheet" href="styles/admin.css">
+
 <main>
-    <div class="admin-panel">
+    <div class="admin-panel-options">
         <h1>Админ панель</h1>
         <div class="admin-options">
             <a href="admin_manage.php?category=movies" class="admin-option">Управление фильмами</a>

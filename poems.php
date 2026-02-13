@@ -4,16 +4,16 @@ include './components/header.php';
 
 $tables = [
     'primary' => [
-        'table' => 'primary_performances',
-        'view_page' => 'view_performance.php'
+        'table' => 'primary_poems',
+        'view_page' => 'view_poem.php'
     ],
     'middle' => [
-        'table' => 'middle_performances',
-        'view_page' => 'view_performance.php'
+        'table' => 'middle_poems',
+        'view_page' => 'view_poem.php'
     ],
     'senior' => [
-        'table' => 'senior_performances',
-        'view_page' => 'view_performance.php'
+        'table' => 'senior_poems',
+        'view_page' => 'view_poem.php'
     ]
 ];
 
@@ -25,7 +25,7 @@ foreach ($tables as $type => $data) {
 }
 ?>
 
-<link rel="stylesheet" href="./styles/movie_all.css">
+<link rel="stylesheet" href="./styles/poems_all.css">
 <style>
     html { scroll-behavior: smooth; }
     .no-results { text-align: center; padding: 40px; font-size: 18px; color: #666; width: 100%; }
@@ -35,7 +35,7 @@ foreach ($tables as $type => $data) {
 
 <main>
 <div class="container">
-<h3>СПЕКТАКЛИ ДЛЯ ВСЕХ КЛАССОВ</h3>
+<h3>ПОЭЗИЯ ДЛЯ ВСЕХ КЛАССОВ</h3>
 <div class="full-poisk">
 
 <div class="class_buttons">
@@ -54,39 +54,36 @@ foreach ($tables as $type => $data) {
 
 </div>
 </div>
-<div class="spect_container">
-    <div id="performancesContainer" class="all_cinema">
+<div class="poem_container">
+    <div id="poemsContainer" class="all_cinema">
         <?php
-        $hasPerformances = false;
+        $hasPoems = false;
         foreach ($tables as $type => $data) {
             if (isset($results[$type]) && $results[$type]->num_rows > 0) {
-                $hasPerformances = true;
-                while ($performance = $results[$type]->fetch_assoc()) {
-                    echo '<a href="' . $data['view_page'] . '?id=' . $performance['id'] . '&from=' . $type . '" class="movie" title="' . htmlspecialchars($performance['title']) . '">';
-                    $imagePath = 'image/' . htmlspecialchars($performance['image_url']);
+                $hasPoems = true;
+                while ($poem = $results[$type]->fetch_assoc()) {
+                    echo '<a href="' . $data['view_page'] . '?id=' . $poem['id'] . '&from=' . $type . '" class="movie" title="' . htmlspecialchars($poem['title']) . '">';
+                    echo '<div class="movie-card-wrapper">';
+                    echo '<img src="image/' . htmlspecialchars($poem['image_url']) . '" alt="' . htmlspecialchars($poem['title']) . '">';
                     
                     $classLabel = '';
                     if ($type == 'primary') {
-                        $classLabel = 'Нач. школа (' . $performance['class'] . ' кл.)';
+                        $classLabel = 'Нач. школа (' . $poem['class'] . ' кл.)';
                     } elseif ($type == 'middle') {
-                        $classLabel = 'Ср. школа (' . $performance['class'] . ' кл.)';
+                        $classLabel = 'Ср. школа (' . $poem['class'] . ' кл.)';
                     } else {
-                        $classLabel = 'Ст. школа (' . $performance['class'] . ' кл.)';
+                        $classLabel = 'Ст. школа (' . $poem['class'] . ' кл.)';
                     }
                     
-                    echo '<div class="movie-card-wrapper">';
-                    echo '<img src="' . $imagePath . '" alt="' . htmlspecialchars($performance['title']) . '">';
                     echo '<span class="class-label">' . $classLabel . '</span>';
                     echo '<div class="movie-title-container">';
-                    echo '<span class="movie-title">' . htmlspecialchars($performance['title']) . '</span>';
-                    echo '<span class="movie-title-full">' . htmlspecialchars($performance['title']) . '</span>';
-                    echo '</div>';
-                    echo '</div>';
-                    echo '</a>';
+                    echo '<span class="movie-title">' . htmlspecialchars($poem['title']) . '</span>';
+                    echo '<span class="movie-title-full">' . htmlspecialchars($poem['title']) . '</span>';
+                    echo '</div></div></a>';
                 }
             }
         }
-        if (!$hasPerformances) echo '<div class="no-results">Спектакли не найдены</div>';
+        if (!$hasPoems) echo '<div class="no-results">Стихи не найдены</div>';
         ?>
     </div>
 </div>
@@ -100,21 +97,21 @@ $(document).ready(function() {
     let currentClass = '';
     let currentSearch = '';
 
-    function loadPerformances() {
-        $('#performancesContainer').html('<div class="loading">Загрузка...</div>');
+    function loadPoems() {
+        $('#poemsContainer').html('<div class="loading">Загрузка...</div>');
         
         $.ajax({
-            url: 'spect_ajax.php',
+            url: 'poems_ajax.php',
             type: 'GET',
             data: {
                 class: currentClass,
                 search: currentSearch
             },
             success: function(response) {
-                $('#performancesContainer').html(response);
+                $('#poemsContainer').html(response);
             },
             error: function() {
-                $('#performancesContainer').html('<div class="error">Ошибка загрузки данных</div>');
+                $('#poemsContainer').html('<div class="error">Ошибка загрузки данных</div>');
             }
         });
     }
@@ -123,13 +120,13 @@ $(document).ready(function() {
         $('.class_btn').removeClass('active');
         $(this).addClass('active');
         currentClass = $(this).data('class');
-        loadPerformances();
+        loadPoems();
     });
 
     $('#searchForm').submit(function(e) {
         e.preventDefault();
         currentSearch = $('#searchInput').val();
-        loadPerformances();
+        loadPoems();
     });
 
     const scrollToTopBtn = document.getElementById("scrollToTopBtn");

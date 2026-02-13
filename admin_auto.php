@@ -1,12 +1,11 @@
 <?php
-include "./components/core.php"; // Подключаем базу данных
-include "./components/header.php"; // Подключаем заголовок
+include "components/core.php"; 
+include "components/header.php";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $login = $_POST['login'];
     $password = $_POST['password'];
 
-    // Подготовленный запрос для предотвращения SQL-инъекций
     $stmt = $conn->prepare("SELECT * FROM `users` WHERE `login` = ?");
     $stmt->bind_param("s", $login);
     $stmt->execute();
@@ -14,9 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($result->num_rows > 0) {
         $user = $result->fetch_assoc();
         
-        // Проверяем совпадение пароля
         if ($user['type'] === 'admin' && $user['password'] === $password) {
-            // Успешная авторизация
             $_SESSION['user']['id'] = $user['id'];
             $_SESSION['user']['type'] = $user['type'];
             header("Location: admin_panel.php");
@@ -30,6 +27,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->close();
 }
 ?>
+
+<link rel="stylesheet" href="styles/admin.css">
+<link rel="stylesheet" href="styles/style.css">
+
 <main>
     <form action="" method="POST">
         <div class="auth">
@@ -39,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <input type="password" name="password" placeholder="Пароль" required>
                 <p style="color:red;"><?php if (isset($_SESSION['error'])) {
                     echo $_SESSION['error'];
-                    unset($_SESSION['error']); // Очищаем сообщение об ошибке после его отображения
+                    unset($_SESSION['error']); 
                 } ?></p>
                 <button type="submit">Войти</button>
                 <button type="button" onclick="window.location.href='index.php'">Отмена</button>
@@ -47,5 +48,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </form>
 </main>
-</body>
-</html>
+<? include 'footer.php'; ?>

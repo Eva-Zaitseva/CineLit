@@ -1,8 +1,7 @@
 <?php
-include "./components/core.php";
-include "./components/header.php";
+include "components/core.php";
+include "components/header.php";
 
-// Проверка, авторизован ли администратор
 if (!isset($_SESSION['user']) || $_SESSION['user']['type'] !== 'admin') {
     header("Location: admin_auto.php");
     exit();
@@ -11,7 +10,6 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['type'] !== 'admin') {
 $category = isset($_GET['category']) ? $_GET['category'] : '';
 $group = isset($_GET['group']) ? $_GET['group'] : 'primary';
 
-// Определение таблиц в зависимости от категории
 $tables = [
     'movies' => [
         'primary' => 'primary_movies',
@@ -41,7 +39,6 @@ if (!array_key_exists($category, $tables) || !array_key_exists($group, $tables[$
 
 $table = $tables[$category][$group];
 
-// Фильтрация по классам
 $classFilter = isset($_GET['class']) ? $_GET['class'] : '';
 
 // Удаление материала
@@ -65,9 +62,10 @@ if (!empty($classFilter)) {
 $result = $conn->query($sql);
 ?>
 
+<link rel="stylesheet" href="styles/admin.css">
+
 <main>
     <div class="admin-panel">
-        <!-- Кнопка возврата к админ-панели -->
         <div style="margin-bottom: 20px;">
             <a href="admin_panel.php" class="back-button">Вернуться к админ-панели</a>
         </div>

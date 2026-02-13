@@ -2,10 +2,8 @@
 include "./components/core.php";
 include "./components/view_header.php";
 
-// Получаем идентификатор стиха из URL
 $poem_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
-// Получаем информацию о стихе из базы данных
 $sql = "SELECT * FROM middle_poems WHERE id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $poem_id);
@@ -13,9 +11,8 @@ $stmt->execute();
 $result = $stmt->get_result();
 $poem = $result->fetch_assoc();
 
-// Проверяем, найден ли Стих/cборник
 if (!$poem) {
-    echo "Сборник не найден.";
+    echo "Стих не найден.";
     exit;
 }
 ?>
@@ -48,7 +45,7 @@ if (!$poem) {
         </ul>
     </div>
 </div>
-<span class="arrow"> <a href="middle.php#poem">Назад к списку поэзии</a> </span>
+<span class="arrow"> <a href="middle.php#poems">Назад к списку поэзии</a> </span>
 </div>
 </main>
 <?php include 'footer.php'; ?>
